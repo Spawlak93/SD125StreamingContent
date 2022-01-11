@@ -43,11 +43,24 @@ namespace StreamingContentTests
         {
             //Arrange
             //Act
-            StreamingContent content = new StreamingContent("Hook", "Grown up peter pan", 8, MaturityRating.PG, true, 123);
+            StreamingContent content = new StreamingContent("Hook", "Grown up peter pan", 8, MaturityRating.PG, 123);
 
             //Assert
             Assert.AreEqual("Hook", content.Title);
             Assert.AreEqual(MaturityRating.PG, content.MaturityRating);
+        }
+
+        //Some users are complaining that the family filter is not working as intended.
+        //Have familyFriendly rating automatically filter out content that is R or NC_17
+        [TestMethod]
+        public void TestIsFamilyFriendly_ShouldReturnCorrectBool()
+        {
+            //Arrange
+            StreamingContent content = new StreamingContent();
+            //Act
+            content.MaturityRating = MaturityRating.G;
+            //Assert
+            Assert.AreEqual(true, content.IsFamilyFriendly);
         }
 
         

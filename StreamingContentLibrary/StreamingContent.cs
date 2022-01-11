@@ -15,15 +15,15 @@ namespace StreamingContentLibrary
     }
     public class StreamingContent
     {
-        public StreamingContent() {}
+        public StreamingContent() { }
 
-        public StreamingContent(string title, string description, double starRating, MaturityRating maturityRating, bool isFamilyFriendly, int runTimeInMinutes)
+        public StreamingContent(string title, string description, double starRating, MaturityRating maturityRating, /*bool isFamilyFriendly,*/ int runTimeInMinutes)
         {
             Title = title;
             Description = description;
             StarRating = starRating;
             MaturityRating = maturityRating;
-            IsFamilyFriendly = isFamilyFriendly;
+            // IsFamilyFriendly = isFamilyFriendly;
             RunTimeInMinutes = runTimeInMinutes;
         }
 
@@ -31,7 +31,15 @@ namespace StreamingContentLibrary
         public string Description { get; set; }
         public double StarRating { get; set; }
         public MaturityRating MaturityRating { get; set; }
-        public bool IsFamilyFriendly { get; set; }
+
+        //Adjust IsFamilyFriendly to return correct bool based on MaturityRating
+        public bool IsFamilyFriendly
+        {
+            get
+            {
+                return MaturityRating < MaturityRating.R;
+            }
+        }
         public int RunTimeInMinutes { get; set; }
     }
 }

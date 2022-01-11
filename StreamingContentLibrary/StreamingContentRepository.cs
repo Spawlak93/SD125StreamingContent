@@ -30,7 +30,7 @@ namespace StreamingContentLibrary
             foreach (StreamingContent target in _repo)
             {
                 //If we find the title return it
-                if (target.Title == title)
+                if (target.Title.ToLower() == title.ToLower())
                 {
                     return target;
                 }
@@ -54,7 +54,7 @@ namespace StreamingContentLibrary
                 oldContent.MaturityRating = newContent.MaturityRating;
                 oldContent.StarRating = newContent.StarRating;
                 oldContent.RunTimeInMinutes = newContent.RunTimeInMinutes;
-                oldContent.IsFamilyFriendly = newContent.IsFamilyFriendly;
+                // oldContent.IsFamilyFriendly = newContent.IsFamilyFriendly;
 
                 //Alternate way of updating
                 // int index = _repo.IndexOf(oldContent);
