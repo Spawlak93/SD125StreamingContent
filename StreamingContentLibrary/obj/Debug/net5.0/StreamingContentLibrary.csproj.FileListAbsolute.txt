@@ -1,0 +1,12 @@
+d:\SD 125 Immersion\RepositoryPatternBuild\StreamingContentLibrary\bin\Debug\net5.0\StreamingContentLibrary.deps.json
+d:\SD 125 Immersion\RepositoryPatternBuild\StreamingContentLibrary\bin\Debug\net5.0\StreamingContentLibrary.dll
+d:\SD 125 Immersion\RepositoryPatternBuild\StreamingContentLibrary\bin\Debug\net5.0\ref\StreamingContentLibrary.dll
+d:\SD 125 Immersion\RepositoryPatternBuild\StreamingContentLibrary\bin\Debug\net5.0\StreamingContentLibrary.pdb
+d:\SD 125 Immersion\RepositoryPatternBuild\StreamingContentLibrary\obj\Debug\net5.0\StreamingContentLibrary.csproj.AssemblyReference.cache
+d:\SD 125 Immersion\RepositoryPatternBuild\StreamingContentLibrary\obj\Debug\net5.0\StreamingContentLibrary.GeneratedMSBuildEditorConfig.editorconfig
+d:\SD 125 Immersion\RepositoryPatternBuild\StreamingContentLibrary\obj\Debug\net5.0\StreamingContentLibrary.AssemblyInfoInputs.cache
+d:\SD 125 Immersion\RepositoryPatternBuild\StreamingContentLibrary\obj\Debug\net5.0\StreamingContentLibrary.AssemblyInfo.cs
+d:\SD 125 Immersion\RepositoryPatternBuild\StreamingContentLibrary\obj\Debug\net5.0\StreamingContentLibrary.csproj.CoreCompileInputs.cache
+d:\SD 125 Immersion\RepositoryPatternBuild\StreamingContentLibrary\obj\Debug\net5.0\StreamingContentLibrary.dll
+d:\SD 125 Immersion\RepositoryPatternBuild\StreamingContentLibrary\obj\Debug\net5.0\ref\StreamingContentLibrary.dll
+d:\SD 125 Immersion\RepositoryPatternBuild\StreamingContentLibrary\obj\Debug\net5.0\StreamingContentLibrary.pdb
