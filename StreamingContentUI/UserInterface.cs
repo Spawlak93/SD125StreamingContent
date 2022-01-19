@@ -3,14 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using StreamingContentLibrary;
+using StreamingContentUI.Consoles;
 
 namespace StreamingContentUI
 {
     public class UserInterface
     {
+        //This is where I hold onto my console
+        private readonly IConsole _console;
+
         //This is where I define how my User Interface runs
         private readonly StreamingContentRepository _repo = new StreamingContentRepository();
         //Run method dictates what runs
+
+        //Add constructor to tell UI what console to use
+        public UserInterface(IConsole console)
+        {
+            _console = console;
+        }
+
+
         public void Run()
         {
             SeedContent();
@@ -22,9 +34,9 @@ namespace StreamingContentUI
             bool isRunning = true;
             while (isRunning)
             {
-                Console.Clear();
+                _console.Clear();
 
-                Console.WriteLine(
+                _console.WriteLine(
                     "Enter the number of your menu selection:\n" +
                     "1. Show all streaming content \n" +
                     "2. Find content by title\n" +
@@ -34,7 +46,7 @@ namespace StreamingContentUI
                     "6. Exit"
                 );
 
-                string userSelection = Console.ReadLine();
+                string userSelection = _console.ReadLine();
 
                 switch (userSelection)
                 {
@@ -61,7 +73,7 @@ namespace StreamingContentUI
 
                     case "6":
                         //EXIT
-                        Console.WriteLine("Goodbye");
+                        _console.WriteLine("Goodbye");
                         isRunning = false;
                         break;
 
@@ -75,7 +87,7 @@ namespace StreamingContentUI
         //Display All Method
         private void DisplayAllContent()
         {
-            Console.Clear();
+            _console.Clear();
 
             List<StreamingContent> listOfContent = _repo.GetContents();
 
@@ -84,8 +96,8 @@ namespace StreamingContentUI
                 PrintContent(content);
             }
 
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
+            _console.WriteLine("Press any key to continue...");
+            _console.ReadKey();
         }
 
 
@@ -93,11 +105,11 @@ namespace StreamingContentUI
         //Display By Title
         private void DisplayByTitle()
         {
-            Console.Clear();
+            _console.Clear();
 
-            Console.WriteLine("What Title are you looking for?");
+            _console.WriteLine("What Title are you looking for?");
 
-            string targetTitle = Console.ReadLine();
+            string targetTitle = _console.ReadLine();
 
             StreamingContent content = _repo.GetContentByTitle(targetTitle);
 
@@ -109,32 +121,32 @@ namespace StreamingContentUI
             else
             {
                 //Content is not found
-                Console.WriteLine("Title not found");
+                _console.WriteLine("Title not found");
             }
 
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
+            _console.WriteLine("Press any key to continue...");
+            _console.ReadKey();
         }
 
         //Add New
         private void AddNewContent()
         {
-            Console.Clear();
+            _console.Clear();
 
             StreamingContent content = new StreamingContent();
 
-            Console.WriteLine("Enter the title: ");
-            content.Title = Console.ReadLine();
+            _console.WriteLine("Enter the title: ");
+            content.Title = _console.ReadLine();
 
-            Console.WriteLine("Enter a Description:");
-            content.Description = Console.ReadLine();
+            _console.WriteLine("Enter a Description:");
+            content.Description = _console.ReadLine();
 
             //Star Rating
-            Console.WriteLine("Enter the star rating:");
-            content.StarRating = double.Parse(Console.ReadLine());
+            _console.WriteLine("Enter the star rating:");
+            content.StarRating = double.Parse(_console.ReadLine());
 
             //Maturity Rating
-            Console.WriteLine(
+            _console.WriteLine(
                 "Select a Maturity Rating: \n" +
                 "1: G" +
                 "2. PG \n" +
@@ -142,7 +154,7 @@ namespace StreamingContentUI
                 "4. R \n" +
                 "5. NC-17 \n"
             );
-            string maturityResponse = Console.ReadLine();
+            string maturityResponse = _console.ReadLine();
             switch (maturityResponse)
             {
                 case "1":
@@ -168,8 +180,8 @@ namespace StreamingContentUI
             }
 
             //Runtime in Minutes
-            Console.WriteLine("Enter the runtime in minutes:");
-            content.RunTimeInMinutes = int.Parse(Console.ReadLine());
+            _console.WriteLine("Enter the runtime in minutes:");
+            content.RunTimeInMinutes = int.Parse(_console.ReadLine());
 
             _repo.AddContentToRepository(content);
             //Add confirmation that content was added.
@@ -190,21 +202,21 @@ namespace StreamingContentUI
         //Delete Content
         private void RemoveExistingContent()
         {
-            Console.Clear();
+            _console.Clear();
 
             //Listing all content and letting user pick one
-            Console.WriteLine("Select the Title you want to remove:");
+            _console.WriteLine("Select the Title you want to remove:");
 
             List<StreamingContent> contentList = _repo.GetContents();
             int counter = 1;
 
             foreach (StreamingContent content in contentList)
             {
-                Console.WriteLine(counter + ". " + content.Title);
+                _console.WriteLine(counter + ". " + content.Title);
                 counter++;
             }
 
-            int contentSelection = int.Parse(Console.ReadLine());
+            int contentSelection = int.Parse(_console.ReadLine());
             int targetIndex = contentSelection - 1;
 
             //check for valid selection
@@ -215,22 +227,22 @@ namespace StreamingContentUI
                 if(_repo.DeleteExistingContent(targetContent))
                 {
                     //Code for success
-                    Console.WriteLine($"{targetContent.Title} was removed");
+                    _console.WriteLine($"{targetContent.Title} was removed");
                 }
                 else
                 {
-                    Console.WriteLine("Something went wrong");
+                    _console.WriteLine("Something went wrong");
                 }
             }
             else
             {
                 //Invalid Selection
-                Console.WriteLine("Invalid Selection");
+                _console.WriteLine("Invalid Selection");
             }
 
             //Potentially replace with helper method
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
+            _console.WriteLine("Press any key to continue...");
+            _console.ReadKey();
         }
 
 
@@ -249,7 +261,7 @@ namespace StreamingContentUI
         //Helper method
         private void PrintContent(StreamingContent content)
         {
-            Console.WriteLine(
+            _console.WriteLine(
                                 $"Title: {content.Title} \n" +
                                 $"Description: {content.Description} \n" +
                                 $"Stars: {content.StarRating} \n" +
