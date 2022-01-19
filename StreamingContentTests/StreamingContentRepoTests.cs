@@ -63,6 +63,7 @@ namespace StreamingContentTests
             StreamingContent content = new StreamingContent();
             StreamingContent jaws = new StreamingContent("Jaws", "Shark Movie", 7.8, MaturityRating.PG_13, 99);
             StreamingContentRepository repo = new StreamingContentRepository();
+            content.Title = "";
             repo.AddContentToRepository(content);
             repo.AddContentToRepository(jaws);
 

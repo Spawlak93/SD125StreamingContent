@@ -8,7 +8,7 @@ namespace StreamingContentUI
         static void Main(string[] args)
         {
             //What Console I want to use
-            IConsole console = new FunConsole();
+            IConsole console = new RealConsole();
             //Pass that to my UI
             UserInterface ui = new UserInterface(console);
             ui.Run();

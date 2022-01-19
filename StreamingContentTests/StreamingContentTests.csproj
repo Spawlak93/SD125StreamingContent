@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StreamingContentLibrary\StreamingContentLibrary.csproj" />
+    <ProjectReference Include="..\StreamingContentUI\StreamingContentUI.csproj" />
   </ItemGroup>
 
 </Project>
